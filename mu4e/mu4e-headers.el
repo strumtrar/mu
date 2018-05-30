@@ -579,8 +579,9 @@ show the subject of a thread only once, similar to e.g. 'mutt'."
     (concat ;; prefix subject with a thread indicator
       (mu4e~headers-thread-prefix tinfo)
       (if (or (not tinfo) (zerop (plist-get tinfo :level))
-	    (plist-get tinfo :empty-parent))
-	(truncate-string-to-width subj 600) ""))))
+	      (plist-get tinfo :empty-parent)
+	      (not (string-match "[Rr]+[Ee]+: " subj)))
+	  (truncate-string-to-width subj 600) ""))))
 
 (defsubst mu4e~headers-mailing-list (list)
   "Get some identifier for the mailing list."
