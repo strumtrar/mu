@@ -1673,10 +1673,9 @@ window                                                      . "
     ;; However, for now we still need the body for e.g. view-in-browser so let's
     ;; not yet do that.
 
-    ;; (if mu4e-view-use-gnus
-    ;;     (mu4e-view msg)
-    ;;   (mu4e~proc-view dowcid decrypt))
-    (mu4e~proc-view docid mark-as-read decrypt verify)))
+    (if mu4e-view-use-gnus
+         (mu4e-view msg)
+      (mu4e~proc-view docid mu4e-view-show-images decrypt))))
 
 (defun mu4e-headers-rerun-search ()
   "Rerun the search for the last search expression."
