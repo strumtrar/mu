@@ -393,7 +393,7 @@ article-mode."
     (unless marked-read
       ;; when we're being marked as read, no need to start rendering
       ;; the messages; just the minimal so (update... ) can find us.
-      (insert-file-contents-literally path)
+      (insert-file-contents-literally (concat mu4e-remote path))
       (unless (message-fetch-field "Content-Type" t)
         ;; For example, for messages in `mu4e-drafts-folder'
         (let ((coding (or (default-value 'buffer-file-coding-system)
