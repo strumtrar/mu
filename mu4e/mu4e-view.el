@@ -384,7 +384,7 @@ article-mode."
                                             gnus-buttonized-mime-types)))
     (switch-to-buffer (get-buffer-create mu4e~view-buffer-name))
     (erase-buffer)
-    (insert-file-contents-literally path)
+    (insert-file-contents-literally (concat mu4e-remote path))
     (unless (message-fetch-field "Content-Type" t)
       ;; For example, for messages in `mu4e-drafts-folder'
       (let ((coding (or (default-value 'buffer-file-coding-system)

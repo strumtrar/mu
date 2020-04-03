@@ -1029,7 +1029,7 @@ mu4e-compose.")
                            (plist-get mu4e~server-props :root-maildir))))
     (unless root-maildir
       (mu4e-error "root maildir unknown; did you start mu4e?"))
-    root-maildir))
+    (concat mu4e-remote root-maildir)))
 
 (defun mu4e-database-path()
   "Get the mu4e database path"
