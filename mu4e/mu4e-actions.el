@@ -303,7 +303,7 @@ RETAG-ARG is a comma-separated list of additions and removals.
 Example: +tag,+long tag,-oldtag
 would add 'tag' and 'long tag', and remove 'oldtag'."
   (let* (
-         (path (mu4e-message-field msg :path))
+         (path (concat mu4e-remote (mu4e-message-field msg :path)))
          (oldtags (mu4e-message-field msg :tags))
          (tags-completion
           (append
@@ -349,7 +349,7 @@ would add 'tag' and 'long tag', and remove 'oldtag'."
        path))
 
     (mu4e-message (concat "tagging: " (mapconcat 'identity taglist ", ")))
-    (mu4e-refresh-message path)))
+    (mu4e-refresh-message (mu4e-message-field msg :path))))
 
 (defun mu4e-action-show-thread (msg)
   "Show thread for message at point with point remaining on MSG.
