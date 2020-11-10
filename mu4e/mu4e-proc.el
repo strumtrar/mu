@@ -312,7 +312,8 @@ backslashes and double-quotes."
   "Add the message at PATH to the database.
 On success, we receive `'(:info add :path <path> :docid <docid>)'
 as well as `'(:update <msg-sexp>)`'; otherwise, we receive an error."
-  (mu4e~call-mu `(add :path ,path)))
+  (let ((remote-path (file-remote-p (file-truename path) 'localname)))
+    (mu4e~call-mu `(add :path ,remote-path))))
 
 (defun mu4e~proc-compose (type decrypt &optional docid)
   "Compose a message of TYPE, DECRYPT it and use DOCID.
